@@ -4,8 +4,12 @@ import time
 import logging
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from datetime import datetime
 
 logging.basicConfig(filename='game_log.txt', level=logging.INFO, format='%(asctime)s - %(message)s')
+
+from gameapi import GameAPI
+from command import Command
 
 # Токен авторизации, полученный при регистрации
 TOKEN = "669018dfc12ad669018dfc12af"
@@ -15,63 +19,6 @@ HEADERS = {
     "X-Auth-Token": TOKEN,
     "Content-Type": "application/json"
 }
-
-class Command:
-    def __init__(self):
-        self.attacks = []
-        self.builds = []
-        self.move_base = None
-
-    def add_attack(self, block_id, x, y):
-        self.attacks.append({"blockId": block_id, "target": {"x": x, "y": y}})
-
-    def add_build(self, x, y):
-        self.builds.append({"x": x, "y": y})
-
-    def set_move_base(self, x, y):
-        self.move_base = {"x": x, "y": y}
-
-    def to_dict(self):
-        return {
-            "attack": self.attacks,
-            "build": self.builds,
-            "moveBase": self.move_base if self.move_base else {}
-        }
-
-class GameAPI:
-    def __init__(self, url, token):
-        self.token = token
-        self.base_url = url
-        self.headers = {
-            "X-Auth-Token": self.token,
-            "Content-Type": "application/json"
-        }
-
-    def register_for_round(self):
-        url = f"{self.base_url}/participate"
-        response = requests.put(url, headers=self.headers)
-        if response.status_code == 200:
-            logging.info("Registered for round successfully!")
-        else:
-            logging.error(f"Failed to register for round: {response.status_code}, {response.text}")
-
-    def get_game_state(self):
-        url = f"{self.base_url}/units"
-        response = requests.get(url, headers=self.headers)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            logging.error(f"Failed to get game state: {response.status_code}, {response.text}")
-            return None
-
-    def send_commands(self, command):
-        url = f"{self.base_url}/command"
-        payload = command.to_dict()
-        response = requests.post(url, headers=self.headers, data=json.dumps(payload))
-        if response.status_code == 200:
-            logging.info("Command accepted!")
-        else:
-            logging.error(f"Failed to send command: {response.status_code}, {response.text}")
 
 def log_and_save_game_state(game_state, filename="game_state.json"):
     with open(filename, 'w') as f:
@@ -143,6 +90,55 @@ def find_build_coords(base_blocks, map_data):
     
     return new_coords
 
+def attack_enemy_bases(game_state, command):
+    # Атакуем чужие базы
+    if "base" in game_state and "enemyBlocks" in game_state:
+        base_blocks = game_state["base"]
+        enemy_blocks = game_state["enemyBlocks"]
+
+        for block in base_blocks:
+            block_id = block["id"]
+            x, y = block["x"], block["y"]
+            attack_radius = block["range"]
+
+            for enemy_block in enemy_blocks:
+                ex, ey = enemy_block["x"], enemy_block["y"]
+                distance = ((x - ex) ** 2 + (y - ey) ** 2) ** 0.5
+                if distance <= attack_radius:
+                    command.add_attack(block_id, ex, ey)
+
+
+def attack_zombies(game_state, command):
+    # Здесь выбираем зомби, по которым будем стрелять
+    if "base" in game_state and "zombies" in game_state:
+        base_blocks = game_state["base"]
+        zombies = game_state["zombies"]
+
+        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in zombies]
+
+        for block in base_blocks:
+            block_id = block["id"]
+            x, y = block["x"], block["y"]
+            attack_radius = block["range"]
+            attack_power = block["attack"]
+
+            nearest_zombie_idx = None
+            nearest_distance = float('inf')
+
+            for idx, zombie in enumerate(zombie_list):
+                zx, zy = zombie["x"], zombie["y"]
+                distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
+
+                if distance <= attack_radius and distance < nearest_distance and zombie['hp'] > 0:
+                    nearest_zombie_idx = idx
+                    nearest_distance = distance
+
+            if nearest_zombie_idx:
+                # TODO: Если это основная база - надо находить сильнейшего зомби, которого необходимо устранить
+                command.add_attack(block_id, zombie_list[nearest_zombie_idx]["x"], zombie_list[nearest_zombie_idx]["y"])
+                zombie_list[nearest_zombie_idx]["hp"] -= attack_power
+
+
 def handle_zombie_attack(zombie, base_blocks, map_data):
     zombie_type = zombie["type"]
     zx, zy = zombie["x"], zombie["y"]
@@ -178,7 +174,7 @@ def strategy(game_state):
         if "zombies" in game_state:
             for zombie in game_state["zombies"]:
                 map_data[(zombie["x"], zombie["y"])] = 'Z'
-    
+
         if base_blocks:
             for block in base_blocks:
                 block_id = block["id"]
@@ -191,6 +187,9 @@ def strategy(game_state):
                     if distance <= attack_radius:
                         command.add_attack(block_id, zx, zy)
 
+        attack_zombies(game_state, command)
+        attack_enemy_bases(game_state, command)
+
         if "zombies" in game_state:
             for zombie in game_state["zombies"]:
                 base_blocks = handle_zombie_attack(zombie, base_blocks, map_data)
@@ -199,29 +198,41 @@ def strategy(game_state):
             build_coords = find_build_coords(base_blocks, map_data)
             for coord in build_coords[:game_state["player"]["gold"]]:  # Ограничиваем количество новых блоков количеством золота
                 command.add_build(coord[0], coord[1])
+                # TODO:
+                # Нужно обязательно взять блоки, которые соединяют базу с отсоединенными блоками
+                # (которые не могут стрелять, потому что не соединены с основной базой)
 
         if base_blocks:
+            # TODO: нужно находить блоки, где близко находится джегернаут или другой сильный зомби, которого нужно убить
             command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
 
-    return command  
+    return command
 
 def main():
     game_api = GameAPI(BASE_URL, TOKEN)
-    game_api.register_for_round()
-    
+
     while True:
-        game_state = game_api.get_game_state()
-        if game_state is None:
-            break
-        
-        log_and_save_game_state(game_state)
-        build_map(game_state)
-        
-        command = strategy(game_state)
 
-        game_api.send_commands(command)
+        game_api.register_for_round()
 
-        time.sleep(0.5)
+        cur_time = datetime.now()
+        hour = cur_time.hour
+        minute = cur_time.minute
+        
+        while True:
+            game_state = game_api.get_game_state()
+            if game_state is None:
+                break
+
+            with open(f'games/{hour}_{minute}.json', 'w') as file:
+                json.dump(game_state, file, indent=4)
+
+            log_and_save_game_state(game_state)
+            build_map(game_state)
+
+            command = strategy(game_state)
+            game_api.send_commands(command)
+            time.sleep(0.5)
 
 if __name__ == "__main__":
     main()
