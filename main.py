@@ -1,11 +1,16 @@
 import requests
 import json
 import time
+import os
+from datetime import datetime
 
 # Токен авторизации, полученный при регистрации
-TOKEN = "669018dfc12ad669018dfc12af"
-BASE_URL = "https://games-test.datsteam.dev/play/zombidef"
+TOKEN = "YOUR_TOKEN_HERE"
 
+# URL для игры
+BASE_URL = "https://games.datsteam.dev/play/zombidef"
+
+# Заголовок для авторизации
 HEADERS = {
     "X-Auth-Token": TOKEN,
     "Content-Type": "application/json"
@@ -34,9 +39,9 @@ class Command:
         }
 
 class GameAPI:
-    def __init__(self, url, token):
+    def __init__(self, token):
         self.token = token
-        self.base_url = url
+        self.base_url = "https://games.datsteam.dev/play/zombidef"
         self.headers = {
             "X-Auth-Token": self.token,
             "Content-Type": "application/json"
@@ -44,8 +49,6 @@ class GameAPI:
 
     def register_for_round(self):
         url = f"{self.base_url}/participate"
-
-        print(url, self.headers)
         response = requests.put(url, headers=self.headers)
         if response.status_code == 200:
             print("Registered for round successfully!")
@@ -70,12 +73,24 @@ class GameAPI:
         else:
             print(f"Failed to send command: {response.status_code}, {response.text}")
 
+    def check_rounds(self):
+        url = f"{self.base_url}/rounds/zombidef"
+        response = requests.get(url, headers=self.headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Failed to get rounds: {response.status_code}, {response.text}")
+            return None
+
 def strategy(game_state):
     command = Command()
-
+    
+    # Получаем ID всех блоков базы
     base_blocks = game_state["base"]
+    gold = game_state["player"]["gold"]
     
     if base_blocks:
+        # Атака зомби если они в радиусе атаки
         for block in base_blocks:
             block_id = block["id"]
             x, y = block["x"], block["y"]
@@ -86,31 +101,76 @@ def strategy(game_state):
                 distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
                 if distance <= attack_radius:
                     command.add_attack(block_id, zx, zy)
-
-    if game_state["player"]["gold"] > 0:
-        build_coords = [(1, 1), (1, 2)]
+    
+    # Построение новых клеток, если есть золото
+    if gold > 0:
+        build_coords = find_build_coords(base_blocks)
         for coord in build_coords:
             command.add_build(coord[0], coord[1])
-
+    
+    # Перемещение центра управления
     if base_blocks:
         command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
 
     return command
 
+def find_build_coords(base_blocks):
+    """Ищет доступные координаты для строительства новых клеток рядом с существующими блоками базы."""
+    new_coords = []
+    existing_coords = {(block["x"], block["y"]) for block in base_blocks}
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    
+    for block in base_blocks:
+        for dx, dy in directions:
+            new_coord = (block["x"] + dx, block["y"] + dy)
+            if new_coord not in existing_coords:
+                new_coords.append(new_coord)
+    
+    return new_coords[:1]  # Возвращаем только одну координату для построения одной клетки за ход
+
+def save_game_state(game_state, filename="game_state.json"):
+    with open(filename, 'w') as f:
+        json.dump(game_state, f, indent=4)
+
+def load_game_state(filename="game_state.json"):
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            return json.load(f)
+    return None
+
 def main():
-    game_api = GameAPI(BASE_URL, TOKEN)
-    game_api.register_for_round()
+    game_api = GameAPI(TOKEN)
     
     while True:
+        # Проверка информации о раундах
+        rounds_info = game_api.check_rounds()
+        if rounds_info:
+            now = datetime.strptime(rounds_info["now"], "%Y-%m-%dT%H:%M:%SZ")
+            for round_info in rounds_info["rounds"]:
+                start_time = datetime.strptime(round_info["startAt"], "%Y-%m-%dT%H:%M:%SZ")
+                if round_info["status"] == "active" and now < start_time:
+                    time_to_start = (start_time - now).total_seconds()
+                    print(f"Next round starts in {time_to_start} seconds.")
+                    time.sleep(time_to_start)
+                    game_api.register_for_round()
+                    break
+        
+        # Получение текущего состояния игры
         game_state = game_api.get_game_state()
         if game_state is None:
             break
-
+        
+        # Сохранение состояния игры
+        save_game_state(game_state)
+        
+        # Применение стратегии
         command = strategy(game_state)
-
+        
+        # Отправка команд
         game_api.send_commands(command)
-
-        time.sleep(0.5)
+        
+        # Ожидание до следующего хода (2 секунды)
+        time.sleep(2)
 
 if __name__ == "__main__":
     main()
