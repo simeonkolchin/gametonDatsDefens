@@ -1,16 +1,16 @@
 {
-    "realmName": "test-day1-6-2",
+    "realmName": "test-day1-8",
     "player": {
-        "gold": 9,
+        "gold": 10,
         "points": 0,
         "name": "\u0430\u043a\u0443\u043d\u0430 \u043c\u0430\u0442\u0430\u0442\u0430",
-        "zombieKills": 578,
+        "zombieKills": 0,
         "enemyBlockKills": 0,
-        "gameEndedAt": "2024-07-12T17:58:52.262235859Z"
+        "gameEndedAt": "2024-07-12T18:27:40.110070718Z"
     },
     "base": null,
     "zombies": null,
     "enemyBlocks": null,
-    "turnEndsInMs": 29,
-    "turn": 181
+    "turnEndsInMs": 481,
+    "turn": 222
 }
