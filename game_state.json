@@ -1,0 +1,16 @@
+{
+    "realmName": "test-day1-3",
+    "player": {
+        "gold": 97,
+        "points": 38,
+        "name": "\u0430\u043a\u0443\u043d\u0430 \u043c\u0430\u0442\u0430\u0442\u0430",
+        "zombieKills": 87,
+        "enemyBlockKills": 0,
+        "gameEndedAt": "2024-07-12T16:47:50.474861448Z"
+    },
+    "base": null,
+    "zombies": null,
+    "enemyBlocks": null,
+    "turnEndsInMs": 0,
+    "turn": 235
+}
