@@ -4,7 +4,7 @@ import time
 
 # Токен авторизации, полученный при регистрации
 TOKEN = "669018dfc12ad669018dfc12af"
-BASE_URL = "https://games-test.datsteam.dev/"
+BASE_URL = "https://games-test.datsteam.dev/play/zombidef"
 
 HEADERS = {
     "X-Auth-Token": TOKEN,
@@ -34,9 +34,9 @@ class Command:
         }
 
 class GameAPI:
-    def __init__(self, token):
+    def __init__(self, url, token):
         self.token = token
-        self.base_url = "https://games.datsteam.dev/play/zombidef"
+        self.base_url = url
         self.headers = {
             "X-Auth-Token": self.token,
             "Content-Type": "application/json"
@@ -44,6 +44,8 @@ class GameAPI:
 
     def register_for_round(self):
         url = f"{self.base_url}/participate"
+
+        print(url, self.headers)
         response = requests.put(url, headers=self.headers)
         if response.status_code == 200:
             print("Registered for round successfully!")
@@ -84,36 +86,31 @@ def strategy(game_state):
                 distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
                 if distance <= attack_radius:
                     command.add_attack(block_id, zx, zy)
-    
-    # Построение новых клеток
+
     if game_state["player"]["gold"] > 0:
         build_coords = [(1, 1), (1, 2)]
         for coord in build_coords:
             command.add_build(coord[0], coord[1])
-    
-    # Перемещение центра управления
+
     if base_blocks:
         command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
 
     return command
 
 def main():
-    game_api = GameAPI(TOKEN)
+    game_api = GameAPI(BASE_URL, TOKEN)
     game_api.register_for_round()
     
     while True:
         game_state = game_api.get_game_state()
         if game_state is None:
             break
-        
-        # Применение стратегии
+
         command = strategy(game_state)
-        
-        # Отправка команд
+
         game_api.send_commands(command)
-        
-        # Ожидание до следующего хода (2 секунды)
-        time.sleep(2)
+
+        time.sleep(0.5)
 
 if __name__ == "__main__":
     main()
