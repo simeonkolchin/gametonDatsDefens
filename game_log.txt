@@ -1,0 +1,6 @@
+2024-07-12 21:59:02,443 - Failed to register for round: 400, {"error":"time for registration has ended, you are participating in this realm","errCode":1001}
+
+2024-07-12 21:59:03,009 - Game state saved to game_state.json
+2024-07-12 22:00:30,742 - Registered for round successfully!
+2024-07-12 22:00:31,293 - Failed to get game state: 400, {"error":"lobby ends in 269 sec","errCode":1002}
+
