@@ -82,10 +82,23 @@ def build_map(game_state, map_filename="game_map.txt"):
     map_data = {}
     if "base" in game_state:
         for block in game_state["base"]:
-            map_data[(block["x"], block["y"])] = 'B'  # B - Base block
+            if block.get("isHead"):
+                map_data[(block["x"], block["y"])] = 'H'  # H - Head block (Control center)
+            else:
+                map_data[(block["x"], block["y"])] = 'B'  # B - Base block
+    if "enemyBlocks" in game_state:
+        for block in game_state["enemyBlocks"]:
+            if block.get("isHead"):
+                map_data[(block["x"], block["y"])] = 'E'  # E - Enemy head block
+            else:
+                map_data[(block["x"], block["y"])] = 'b'  # b - Enemy base block
     if "zombies" in game_state:
         for zombie in game_state["zombies"]:
-            map_data[(zombie["x"], zombie["y"])] = 'Z'  # Z - Zombie
+            zombie_type = zombie["type"]
+            map_data[(zombie["x"], zombie["y"])] = f'Z({zombie_type[0].upper()})'  # Z - Zombie with type initial
+    if "walls" in game_state:
+        for wall in game_state["walls"]:
+            map_data[(wall["x"], wall["y"])] = 'W'  # W - Wall
 
     if not map_data:
         return
@@ -110,24 +123,37 @@ def build_map(game_state, map_filename="game_map.txt"):
     logging.info(f"Game map saved to {map_filename}")
     
     # Визуализация карты
-    visualize_map(map_data, min_x, max_x, min_y, max_y)
+    visualize_map(game_state, map_data, min_x, max_x, min_y, max_y)
 
-def visualize_map(map_data, min_x, max_x, min_y, max_y):
+def visualize_map(game_state, map_data, min_x, max_x, min_y, max_y):
     fig, ax = plt.subplots()
     for (x, y), value in map_data.items():
-        if value == 'B':
+        if value == 'H':
+            color = 'blue'
+        elif value == 'B':
             color = 'green'
-        elif value == 'Z':
+        elif value == 'E':
+            color = 'purple'
+        elif value == 'b':
+            color = 'pink'
+        elif value.startswith('Z'):
             color = 'red'
+        elif value == 'W':
+            color = 'gray'
         else:
             color = 'white'
         rect = patches.Rectangle((x, y), 1, 1, linewidth=1, edgecolor='black', facecolor=color)
         ax.add_patch(rect)
-    
+
+    # Добавление информации о игроке
+    player_info = game_state["player"]
+    plt.text(min_x - 1, max_y + 2, f"Gold: {player_info['gold']}\nPoints: {player_info['points']}\nZombie Kills: {player_info['zombieKills']}\nEnemy Block Kills: {player_info['enemyBlockKills']}", fontsize=12, bbox=dict(facecolor='white', alpha=0.5))
+
     plt.xlim(min_x - 1, max_x + 1)
-    plt.ylim(min_y - 1, max_y + 1)
+    plt.ylim(min_y - 1, max_y + 3)
     plt.gca().set_aspect('equal', adjustable='box')
     plt.savefig("game_map_visualized.png")
+    plt.close(fig)
     logging.info("Game map visualized and saved to game_map_visualized.png")
 
 def find_build_coords(base_blocks, map_data):
@@ -175,9 +201,20 @@ def strategy(game_state):
     if "base" in game_state:
         base_blocks = game_state["base"]
         map_data = {(block["x"], block["y"]): 'B' for block in base_blocks}
+        for block in base_blocks:
+            if block.get("isHead"):
+                map_data[(block["x"], block["y"])] = 'H'
         if "zombies" in game_state:
             for zombie in game_state["zombies"]:
-                map_data[(zombie["x"], zombie["y"])] = 'Z'
+                map_data[(zombie["x"], zombie["y"])] = f'Z({zombie["type"][0].upper()})'
+        if "walls" in game_state:
+            for wall in game_state["walls"]:
+                map_data[(wall["x"], wall["y"])] = 'W'
+        if "enemyBlocks" in game_state:
+            for block in game_state["enemyBlocks"]:
+                map_data[(block["x"], block["y"])] = 'b'
+                if block.get("isHead"):
+                    map_data[(block["x"], block["y"])] = 'E'
     
         if base_blocks:
             for block in base_blocks:
@@ -203,7 +240,7 @@ def strategy(game_state):
         if base_blocks:
             command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
 
-    return command  
+    return command
 
 def main():
     game_api = GameAPI(BASE_URL, TOKEN)
