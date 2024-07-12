@@ -3,73 +3,114 @@ import json
 import time
 
 # Токен авторизации, полученный при регистрации
-TOKEN = "YOUR_TOKEN_HERE"
+TOKEN = "669018dfc12ad669018dfc12af"
+BASE_URL = "https://games-test.datsteam.dev/"
 
-# URL для игры
-BASE_URL = "https://games.datsteam.dev/play/zombidef"
-
-# Заголовок для авторизации
 HEADERS = {
     "X-Auth-Token": TOKEN,
     "Content-Type": "application/json"
 }
 
-def register_for_round():
-    url = f"{BASE_URL}/participate"
-    response = requests.put(url, headers=HEADERS)
-    if response.status_code == 200:
-        print("Registered for round successfully!")
-    else:
-        print(f"Failed to register for round: {response.status_code}, {response.text}")
+class Command:
+    def __init__(self):
+        self.attacks = []
+        self.builds = []
+        self.move_base = None
 
-def get_game_state():
-    url = f"{BASE_URL}/units"
-    response = requests.get(url, headers=HEADERS)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Failed to get game state: {response.status_code}, {response.text}")
-        return None
+    def add_attack(self, block_id, x, y):
+        self.attacks.append({"blockId": block_id, "target": {"x": x, "y": y}})
 
-def build_cells(coordinates):
-    url = f"{BASE_URL}/command"
-    payload = {
-        "build": [{"x": coord[0], "y": coord[1]} for coord in coordinates]
-    }
-    response = requests.post(url, headers=HEADERS, data=json.dumps(payload))
-    if response.status_code == 200:
-        print("Build command accepted!")
-    else:
-        print(f"Failed to send build command: {response.status_code}, {response.text}")
+    def add_build(self, x, y):
+        self.builds.append({"x": x, "y": y})
 
-def attack_cells(targets):
-    url = f"{BASE_URL}/command"
-    payload = {
-        "attack": [{"x": target[0], "y": target[1]} for target in targets]
-    }
-    response = requests.post(url, headers=HEADERS, data=json.dumps(payload))
-    if response.status_code == 200:
-        print("Attack command accepted!")
-    else:
-        print(f"Failed to send attack command: {response.status_code}, {response.text}")
+    def set_move_base(self, x, y):
+        self.move_base = {"x": x, "y": y}
+
+    def to_dict(self):
+        return {
+            "attack": self.attacks,
+            "build": self.builds,
+            "moveBase": self.move_base if self.move_base else {}
+        }
+
+class GameAPI:
+    def __init__(self, token):
+        self.token = token
+        self.base_url = "https://games.datsteam.dev/play/zombidef"
+        self.headers = {
+            "X-Auth-Token": self.token,
+            "Content-Type": "application/json"
+        }
+
+    def register_for_round(self):
+        url = f"{self.base_url}/participate"
+        response = requests.put(url, headers=self.headers)
+        if response.status_code == 200:
+            print("Registered for round successfully!")
+        else:
+            print(f"Failed to register for round: {response.status_code}, {response.text}")
+
+    def get_game_state(self):
+        url = f"{self.base_url}/units"
+        response = requests.get(url, headers=self.headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Failed to get game state: {response.status_code}, {response.text}")
+            return None
+
+    def send_commands(self, command):
+        url = f"{self.base_url}/command"
+        payload = command.to_dict()
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload))
+        if response.status_code == 200:
+            print("Command accepted!")
+        else:
+            print(f"Failed to send command: {response.status_code}, {response.text}")
+
+def strategy(game_state):
+    command = Command()
+
+    base_blocks = game_state["base"]
+    
+    if base_blocks:
+        for block in base_blocks:
+            block_id = block["id"]
+            x, y = block["x"], block["y"]
+            attack_radius = block["range"]
+            
+            for zombie in game_state["zombies"]:
+                zx, zy = zombie["x"], zombie["y"]
+                distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
+                if distance <= attack_radius:
+                    command.add_attack(block_id, zx, zy)
+    
+    # Построение новых клеток
+    if game_state["player"]["gold"] > 0:
+        build_coords = [(1, 1), (1, 2)]
+        for coord in build_coords:
+            command.add_build(coord[0], coord[1])
+    
+    # Перемещение центра управления
+    if base_blocks:
+        command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
+
+    return command
 
 def main():
-    # Регистрация на раунд
-    register_for_round()
+    game_api = GameAPI(TOKEN)
+    game_api.register_for_round()
     
     while True:
-        # Получение текущего состояния игры
-        game_state = get_game_state()
+        game_state = game_api.get_game_state()
         if game_state is None:
             break
         
-        # Пример координат для постройки новых клеток базы
-        build_coords = [(1, 1), (1, 2)]
-        build_cells(build_coords)
+        # Применение стратегии
+        command = strategy(game_state)
         
-        # Пример координат для атаки
-        attack_coords = [(5, 5), (6, 6)]
-        attack_cells(attack_coords)
+        # Отправка команд
+        game_api.send_commands(command)
         
         # Ожидание до следующего хода (2 секунды)
         time.sleep(2)
