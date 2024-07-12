@@ -129,6 +129,12 @@ def attack_zombies(game_state, command):
                 zx, zy = zombie["x"], zombie["y"]
                 distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
 
+                if zombie['type'] in ['liner']:
+                    distance -= 1
+
+                if zombie['type'] in ['bomber', 'juggernaut', 'chaos_knight']:
+                    distance -= 2.5
+
                 if distance <= attack_radius and distance < nearest_distance and zombie['hp'] > 0:
                     nearest_zombie_idx = idx
                     nearest_distance = distance
@@ -137,7 +143,6 @@ def attack_zombies(game_state, command):
                 # TODO: Если это основная база - надо находить сильнейшего зомби, которого необходимо устранить
                 command.add_attack(block_id, zombie_list[nearest_zombie_idx]["x"], zombie_list[nearest_zombie_idx]["y"])
                 zombie_list[nearest_zombie_idx]["hp"] -= attack_power
-
 
 def handle_zombie_attack(zombie, base_blocks, map_data):
     zombie_type = zombie["type"]
@@ -201,6 +206,7 @@ def strategy(game_state):
                 # TODO:
                 # Нужно обязательно взять блоки, которые соединяют базу с отсоединенными блоками
                 # (которые не могут стрелять, потому что не соединены с основной базой)
+                # Стены еще надо парсить и смотреть чтоб на них не заходить
 
         if base_blocks:
             # TODO: нужно находить блоки, где близко находится джегернаут или другой сильный зомби, которого нужно убить
