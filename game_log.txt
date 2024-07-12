@@ -7,3 +7,620 @@
 2024-07-12 20:19:46,579 - Failed to register for round: 400, {"error":"time for registration has ended, you are participating in this realm","errCode":1001}
 
 2024-07-12 20:19:48,144 - Game state saved to game_state.json
+2024-07-12 23:43:16,751 - Registered for round successfully!
+2024-07-12 23:43:17,658 - Failed to get game state: 400, {"error":"lobby ends in 103 sec","errCode":1002}
+
+2024-07-12 23:44:44,184 - Registered for round successfully!
+2024-07-12 23:44:45,773 - Failed to get game state: 400, {"error":"lobby ends in 15 sec","errCode":1002}
+
+2024-07-12 23:45:37,622 - Failed to register for round: 400, {"error":"time for registration has ended, you are participating in this realm","errCode":1001}
+
+2024-07-12 23:45:38,101 - Game state saved to game_state.json
+2024-07-12 23:45:38,103 - Game map saved to game_map.txt
+2024-07-12 23:45:38,208 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:38,698 - Command accepted!
+2024-07-12 23:45:39,711 - Game state saved to game_state.json
+2024-07-12 23:45:39,711 - Game map saved to game_map.txt
+2024-07-12 23:45:39,781 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:40,255 - Command accepted!
+2024-07-12 23:45:41,424 - Game state saved to game_state.json
+2024-07-12 23:45:41,424 - Game map saved to game_map.txt
+2024-07-12 23:45:41,506 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:41,996 - Command accepted!
+2024-07-12 23:45:42,973 - Game state saved to game_state.json
+2024-07-12 23:45:42,973 - Game map saved to game_map.txt
+2024-07-12 23:45:43,041 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:43,523 - Command accepted!
+2024-07-12 23:45:44,513 - Game state saved to game_state.json
+2024-07-12 23:45:44,513 - Game map saved to game_map.txt
+2024-07-12 23:45:44,587 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:45,070 - Command accepted!
+2024-07-12 23:45:46,054 - Game state saved to game_state.json
+2024-07-12 23:45:46,055 - Game map saved to game_map.txt
+2024-07-12 23:45:46,135 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:47,634 - Command accepted!
+2024-07-12 23:45:48,631 - Game state saved to game_state.json
+2024-07-12 23:45:48,631 - Game map saved to game_map.txt
+2024-07-12 23:45:48,732 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:49,243 - Command accepted!
+2024-07-12 23:45:50,305 - Game state saved to game_state.json
+2024-07-12 23:45:50,306 - Game map saved to game_map.txt
+2024-07-12 23:45:50,405 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:50,901 - Command accepted!
+2024-07-12 23:45:51,896 - Game state saved to game_state.json
+2024-07-12 23:45:51,896 - Game map saved to game_map.txt
+2024-07-12 23:45:51,995 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:52,500 - Command accepted!
+2024-07-12 23:45:53,506 - Game state saved to game_state.json
+2024-07-12 23:45:53,506 - Game map saved to game_map.txt
+2024-07-12 23:45:53,594 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:54,080 - Command accepted!
+2024-07-12 23:45:55,074 - Game state saved to game_state.json
+2024-07-12 23:45:55,074 - Game map saved to game_map.txt
+2024-07-12 23:45:55,148 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:56,007 - Command accepted!
+2024-07-12 23:45:56,980 - Game state saved to game_state.json
+2024-07-12 23:45:56,980 - Game map saved to game_map.txt
+2024-07-12 23:45:57,084 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:57,572 - Command accepted!
+2024-07-12 23:45:58,757 - Game state saved to game_state.json
+2024-07-12 23:45:58,757 - Game map saved to game_map.txt
+2024-07-12 23:45:58,856 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:45:59,341 - Command accepted!
+2024-07-12 23:46:00,315 - Game state saved to game_state.json
+2024-07-12 23:46:00,315 - Game map saved to game_map.txt
+2024-07-12 23:46:00,409 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:00,895 - Command accepted!
+2024-07-12 23:46:01,905 - Game state saved to game_state.json
+2024-07-12 23:46:01,905 - Game map saved to game_map.txt
+2024-07-12 23:46:02,004 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:02,608 - Command accepted!
+2024-07-12 23:46:03,591 - Game state saved to game_state.json
+2024-07-12 23:46:03,591 - Game map saved to game_map.txt
+2024-07-12 23:46:03,657 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:04,131 - Command accepted!
+2024-07-12 23:46:05,134 - Game state saved to game_state.json
+2024-07-12 23:46:05,135 - Game map saved to game_map.txt
+2024-07-12 23:46:05,202 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:05,710 - Command accepted!
+2024-07-12 23:46:06,704 - Game state saved to game_state.json
+2024-07-12 23:46:06,704 - Game map saved to game_map.txt
+2024-07-12 23:46:06,778 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:07,260 - Command accepted!
+2024-07-12 23:46:08,242 - Game state saved to game_state.json
+2024-07-12 23:46:08,242 - Game map saved to game_map.txt
+2024-07-12 23:46:08,315 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:08,790 - Command accepted!
+2024-07-12 23:46:09,767 - Game state saved to game_state.json
+2024-07-12 23:46:09,768 - Game map saved to game_map.txt
+2024-07-12 23:46:09,863 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:11,473 - Command accepted!
+2024-07-12 23:46:12,577 - Game state saved to game_state.json
+2024-07-12 23:46:12,577 - Game map saved to game_map.txt
+2024-07-12 23:46:12,654 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:13,274 - Command accepted!
+2024-07-12 23:46:14,614 - Game state saved to game_state.json
+2024-07-12 23:46:14,615 - Game map saved to game_map.txt
+2024-07-12 23:46:14,709 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:15,215 - Command accepted!
+2024-07-12 23:46:16,211 - Game state saved to game_state.json
+2024-07-12 23:46:16,211 - Game map saved to game_map.txt
+2024-07-12 23:46:16,300 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:16,803 - Command accepted!
+2024-07-12 23:46:17,791 - Game state saved to game_state.json
+2024-07-12 23:46:17,791 - Game map saved to game_map.txt
+2024-07-12 23:46:17,956 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:18,485 - Command accepted!
+2024-07-12 23:46:19,736 - Game state saved to game_state.json
+2024-07-12 23:46:19,737 - Game map saved to game_map.txt
+2024-07-12 23:46:19,822 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:20,311 - Command accepted!
+2024-07-12 23:46:21,282 - Game state saved to game_state.json
+2024-07-12 23:46:21,282 - Game map saved to game_map.txt
+2024-07-12 23:46:21,390 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:22,314 - Command accepted!
+2024-07-12 23:46:24,857 - Game state saved to game_state.json
+2024-07-12 23:46:24,857 - Game map saved to game_map.txt
+2024-07-12 23:46:24,981 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:25,669 - Command accepted!
+2024-07-12 23:46:26,647 - Game state saved to game_state.json
+2024-07-12 23:46:26,647 - Game map saved to game_map.txt
+2024-07-12 23:46:26,744 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:27,628 - Command accepted!
+2024-07-12 23:46:28,723 - Game state saved to game_state.json
+2024-07-12 23:46:28,723 - Game map saved to game_map.txt
+2024-07-12 23:46:28,823 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:29,316 - Command accepted!
+2024-07-12 23:46:30,320 - Game state saved to game_state.json
+2024-07-12 23:46:30,320 - Game map saved to game_map.txt
+2024-07-12 23:46:30,419 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:31,264 - Command accepted!
+2024-07-12 23:46:32,259 - Game state saved to game_state.json
+2024-07-12 23:46:32,259 - Game map saved to game_map.txt
+2024-07-12 23:46:32,362 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:33,052 - Command accepted!
+2024-07-12 23:46:34,028 - Game state saved to game_state.json
+2024-07-12 23:46:34,029 - Game map saved to game_map.txt
+2024-07-12 23:46:34,153 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:34,632 - Command accepted!
+2024-07-12 23:46:35,631 - Game state saved to game_state.json
+2024-07-12 23:46:35,632 - Game map saved to game_map.txt
+2024-07-12 23:46:35,883 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:36,371 - Command accepted!
+2024-07-12 23:46:37,363 - Game state saved to game_state.json
+2024-07-12 23:46:37,364 - Game map saved to game_map.txt
+2024-07-12 23:46:37,517 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:38,010 - Command accepted!
+2024-07-12 23:46:39,355 - Game state saved to game_state.json
+2024-07-12 23:46:39,356 - Game map saved to game_map.txt
+2024-07-12 23:46:39,507 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:40,213 - Command accepted!
+2024-07-12 23:46:41,211 - Game state saved to game_state.json
+2024-07-12 23:46:41,212 - Game map saved to game_map.txt
+2024-07-12 23:46:41,328 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:41,950 - Command accepted!
+2024-07-12 23:46:42,951 - Game state saved to game_state.json
+2024-07-12 23:46:42,951 - Game map saved to game_map.txt
+2024-07-12 23:46:43,125 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:43,635 - Command accepted!
+2024-07-12 23:46:44,625 - Game state saved to game_state.json
+2024-07-12 23:46:44,626 - Game map saved to game_map.txt
+2024-07-12 23:46:44,794 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:45,330 - Command accepted!
+2024-07-12 23:46:46,306 - Game state saved to game_state.json
+2024-07-12 23:46:46,307 - Game map saved to game_map.txt
+2024-07-12 23:46:46,466 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:47,897 - Command accepted!
+2024-07-12 23:46:49,941 - Game state saved to game_state.json
+2024-07-12 23:46:49,942 - Game map saved to game_map.txt
+2024-07-12 23:46:50,119 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:50,643 - Command accepted!
+2024-07-12 23:46:51,642 - Game state saved to game_state.json
+2024-07-12 23:46:51,643 - Game map saved to game_map.txt
+2024-07-12 23:46:51,952 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:52,553 - Command accepted!
+2024-07-12 23:46:53,737 - Game state saved to game_state.json
+2024-07-12 23:46:53,737 - Game map saved to game_map.txt
+2024-07-12 23:46:53,905 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:55,517 - Command accepted!
+2024-07-12 23:46:56,963 - Game state saved to game_state.json
+2024-07-12 23:46:56,964 - Game map saved to game_map.txt
+2024-07-12 23:46:57,118 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:57,613 - Command accepted!
+2024-07-12 23:46:59,100 - Game state saved to game_state.json
+2024-07-12 23:46:59,101 - Game map saved to game_map.txt
+2024-07-12 23:46:59,258 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:46:59,793 - Command accepted!
+2024-07-12 23:47:00,914 - Game state saved to game_state.json
+2024-07-12 23:47:00,914 - Game map saved to game_map.txt
+2024-07-12 23:47:01,068 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:01,606 - Command accepted!
+2024-07-12 23:47:02,586 - Game state saved to game_state.json
+2024-07-12 23:47:02,586 - Game map saved to game_map.txt
+2024-07-12 23:47:02,802 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:03,308 - Command accepted!
+2024-07-12 23:47:04,336 - Game state saved to game_state.json
+2024-07-12 23:47:04,336 - Game map saved to game_map.txt
+2024-07-12 23:47:04,523 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:05,031 - Command accepted!
+2024-07-12 23:47:07,104 - Game state saved to game_state.json
+2024-07-12 23:47:07,104 - Game map saved to game_map.txt
+2024-07-12 23:47:07,388 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:07,869 - Command accepted!
+2024-07-12 23:47:08,897 - Game state saved to game_state.json
+2024-07-12 23:47:08,898 - Game map saved to game_map.txt
+2024-07-12 23:47:09,129 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:09,609 - Command accepted!
+2024-07-12 23:47:10,646 - Game state saved to game_state.json
+2024-07-12 23:47:10,647 - Game map saved to game_map.txt
+2024-07-12 23:47:10,843 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:11,353 - Command accepted!
+2024-07-12 23:47:12,357 - Game state saved to game_state.json
+2024-07-12 23:47:12,358 - Game map saved to game_map.txt
+2024-07-12 23:47:12,565 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:13,199 - Command accepted!
+2024-07-12 23:47:14,203 - Game state saved to game_state.json
+2024-07-12 23:47:14,204 - Game map saved to game_map.txt
+2024-07-12 23:47:14,421 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:15,022 - Command accepted!
+2024-07-12 23:47:16,216 - Game state saved to game_state.json
+2024-07-12 23:47:16,217 - Game map saved to game_map.txt
+2024-07-12 23:47:16,444 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:16,976 - Command accepted!
+2024-07-12 23:47:18,398 - Game state saved to game_state.json
+2024-07-12 23:47:18,399 - Game map saved to game_map.txt
+2024-07-12 23:47:18,646 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:19,180 - Command accepted!
+2024-07-12 23:47:20,482 - Game state saved to game_state.json
+2024-07-12 23:47:20,482 - Game map saved to game_map.txt
+2024-07-12 23:47:20,923 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:21,547 - Command accepted!
+2024-07-12 23:47:22,542 - Game state saved to game_state.json
+2024-07-12 23:47:22,543 - Game map saved to game_map.txt
+2024-07-12 23:47:22,824 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:23,683 - Command accepted!
+2024-07-12 23:47:24,686 - Game state saved to game_state.json
+2024-07-12 23:47:24,686 - Game map saved to game_map.txt
+2024-07-12 23:47:24,965 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:25,718 - Command accepted!
+2024-07-12 23:47:26,705 - Game state saved to game_state.json
+2024-07-12 23:47:26,706 - Game map saved to game_map.txt
+2024-07-12 23:47:26,997 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:27,598 - Command accepted!
+2024-07-12 23:47:28,747 - Game state saved to game_state.json
+2024-07-12 23:47:28,747 - Game map saved to game_map.txt
+2024-07-12 23:47:29,061 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:29,655 - Command accepted!
+2024-07-12 23:47:30,642 - Game state saved to game_state.json
+2024-07-12 23:47:30,642 - Game map saved to game_map.txt
+2024-07-12 23:47:30,882 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:31,511 - Command accepted!
+2024-07-12 23:47:32,503 - Game state saved to game_state.json
+2024-07-12 23:47:32,504 - Game map saved to game_map.txt
+2024-07-12 23:47:32,720 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:33,531 - Command accepted!
+2024-07-12 23:47:34,529 - Game state saved to game_state.json
+2024-07-12 23:47:34,530 - Game map saved to game_map.txt
+2024-07-12 23:47:34,808 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:35,810 - Command accepted!
+2024-07-12 23:47:36,826 - Game state saved to game_state.json
+2024-07-12 23:47:36,826 - Game map saved to game_map.txt
+2024-07-12 23:47:37,456 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:38,370 - Command accepted!
+2024-07-12 23:47:39,376 - Game state saved to game_state.json
+2024-07-12 23:47:39,376 - Game map saved to game_map.txt
+2024-07-12 23:47:39,629 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:40,245 - Command accepted!
+2024-07-12 23:47:41,257 - Game state saved to game_state.json
+2024-07-12 23:47:41,258 - Game map saved to game_map.txt
+2024-07-12 23:47:41,715 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:42,564 - Command accepted!
+2024-07-12 23:47:44,150 - Game state saved to game_state.json
+2024-07-12 23:47:44,150 - Game map saved to game_map.txt
+2024-07-12 23:47:44,457 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:45,090 - Command accepted!
+2024-07-12 23:47:46,100 - Game state saved to game_state.json
+2024-07-12 23:47:46,101 - Game map saved to game_map.txt
+2024-07-12 23:47:46,360 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:47,075 - Command accepted!
+2024-07-12 23:47:48,099 - Game state saved to game_state.json
+2024-07-12 23:47:48,099 - Game map saved to game_map.txt
+2024-07-12 23:47:48,340 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:49,062 - Command accepted!
+2024-07-12 23:47:50,051 - Game state saved to game_state.json
+2024-07-12 23:47:50,052 - Game map saved to game_map.txt
+2024-07-12 23:47:50,315 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:50,950 - Command accepted!
+2024-07-12 23:47:52,119 - Game state saved to game_state.json
+2024-07-12 23:47:52,120 - Game map saved to game_map.txt
+2024-07-12 23:47:52,693 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:53,312 - Command accepted!
+2024-07-12 23:47:54,321 - Game state saved to game_state.json
+2024-07-12 23:47:54,322 - Game map saved to game_map.txt
+2024-07-12 23:47:54,611 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:55,226 - Command accepted!
+2024-07-12 23:47:56,685 - Game state saved to game_state.json
+2024-07-12 23:47:56,686 - Game map saved to game_map.txt
+2024-07-12 23:47:56,987 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:57,632 - Command accepted!
+2024-07-12 23:47:58,714 - Game state saved to game_state.json
+2024-07-12 23:47:58,714 - Game map saved to game_map.txt
+2024-07-12 23:47:59,016 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:47:59,656 - Command accepted!
+2024-07-12 23:48:00,752 - Game state saved to game_state.json
+2024-07-12 23:48:00,753 - Game map saved to game_map.txt
+2024-07-12 23:48:01,107 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:01,958 - Command accepted!
+2024-07-12 23:48:03,436 - Game state saved to game_state.json
+2024-07-12 23:48:03,437 - Game map saved to game_map.txt
+2024-07-12 23:48:03,756 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:04,421 - Command accepted!
+2024-07-12 23:48:05,508 - Game state saved to game_state.json
+2024-07-12 23:48:05,509 - Game map saved to game_map.txt
+2024-07-12 23:48:05,864 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:06,645 - Command accepted!
+2024-07-12 23:48:09,091 - Game state saved to game_state.json
+2024-07-12 23:48:09,092 - Game map saved to game_map.txt
+2024-07-12 23:48:09,828 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:12,263 - Command accepted!
+2024-07-12 23:48:13,375 - Game state saved to game_state.json
+2024-07-12 23:48:13,376 - Game map saved to game_map.txt
+2024-07-12 23:48:13,715 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:14,849 - Command accepted!
+2024-07-12 23:48:15,951 - Game state saved to game_state.json
+2024-07-12 23:48:15,952 - Game map saved to game_map.txt
+2024-07-12 23:48:16,331 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:18,626 - Command accepted!
+2024-07-12 23:48:19,717 - Game state saved to game_state.json
+2024-07-12 23:48:19,718 - Game map saved to game_map.txt
+2024-07-12 23:48:20,085 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:22,270 - Command accepted!
+2024-07-12 23:48:24,419 - Game state saved to game_state.json
+2024-07-12 23:48:24,420 - Game map saved to game_map.txt
+2024-07-12 23:48:24,825 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:25,599 - Command accepted!
+2024-07-12 23:48:26,693 - Game state saved to game_state.json
+2024-07-12 23:48:26,694 - Game map saved to game_map.txt
+2024-07-12 23:48:27,138 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:27,959 - Command accepted!
+2024-07-12 23:48:29,212 - Game state saved to game_state.json
+2024-07-12 23:48:29,213 - Game map saved to game_map.txt
+2024-07-12 23:48:29,734 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:30,925 - Command accepted!
+2024-07-12 23:48:32,583 - Game state saved to game_state.json
+2024-07-12 23:48:32,583 - Game map saved to game_map.txt
+2024-07-12 23:48:33,016 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:34,084 - Command accepted!
+2024-07-12 23:48:35,920 - Game state saved to game_state.json
+2024-07-12 23:48:35,922 - Game map saved to game_map.txt
+2024-07-12 23:48:36,573 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:37,390 - Command accepted!
+2024-07-12 23:48:38,508 - Game state saved to game_state.json
+2024-07-12 23:48:38,509 - Game map saved to game_map.txt
+2024-07-12 23:48:38,915 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:39,689 - Command accepted!
+2024-07-12 23:48:42,587 - Game state saved to game_state.json
+2024-07-12 23:48:42,588 - Game map saved to game_map.txt
+2024-07-12 23:48:43,042 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:43,820 - Command accepted!
+2024-07-12 23:48:45,090 - Game state saved to game_state.json
+2024-07-12 23:48:45,091 - Game map saved to game_map.txt
+2024-07-12 23:48:45,465 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:47,631 - Command accepted!
+2024-07-12 23:48:48,754 - Game state saved to game_state.json
+2024-07-12 23:48:48,755 - Game map saved to game_map.txt
+2024-07-12 23:48:49,236 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:50,006 - Command accepted!
+2024-07-12 23:48:51,270 - Game state saved to game_state.json
+2024-07-12 23:48:51,272 - Game map saved to game_map.txt
+2024-07-12 23:48:51,688 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:52,473 - Command accepted!
+2024-07-12 23:48:53,569 - Game state saved to game_state.json
+2024-07-12 23:48:53,571 - Game map saved to game_map.txt
+2024-07-12 23:48:54,004 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:55,365 - Command accepted!
+2024-07-12 23:48:56,798 - Game state saved to game_state.json
+2024-07-12 23:48:56,799 - Game map saved to game_map.txt
+2024-07-12 23:48:57,326 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:48:58,141 - Command accepted!
+2024-07-12 23:48:59,238 - Game state saved to game_state.json
+2024-07-12 23:48:59,238 - Game map saved to game_map.txt
+2024-07-12 23:49:00,498 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:01,545 - Command accepted!
+2024-07-12 23:49:02,652 - Game state saved to game_state.json
+2024-07-12 23:49:02,653 - Game map saved to game_map.txt
+2024-07-12 23:49:03,012 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:03,839 - Command accepted!
+2024-07-12 23:49:04,942 - Game state saved to game_state.json
+2024-07-12 23:49:04,942 - Game map saved to game_map.txt
+2024-07-12 23:49:05,388 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:06,170 - Command accepted!
+2024-07-12 23:49:07,300 - Game state saved to game_state.json
+2024-07-12 23:49:07,301 - Game map saved to game_map.txt
+2024-07-12 23:49:07,912 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:09,172 - Command accepted!
+2024-07-12 23:49:10,741 - Game state saved to game_state.json
+2024-07-12 23:49:10,742 - Game map saved to game_map.txt
+2024-07-12 23:49:11,607 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:12,480 - Command accepted!
+2024-07-12 23:49:13,575 - Game state saved to game_state.json
+2024-07-12 23:49:13,577 - Game map saved to game_map.txt
+2024-07-12 23:49:14,205 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:15,039 - Command accepted!
+2024-07-12 23:49:16,525 - Game state saved to game_state.json
+2024-07-12 23:49:16,526 - Game map saved to game_map.txt
+2024-07-12 23:49:17,129 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:18,184 - Command accepted!
+2024-07-12 23:49:19,419 - Game state saved to game_state.json
+2024-07-12 23:49:19,419 - Game map saved to game_map.txt
+2024-07-12 23:49:19,939 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:20,762 - Command accepted!
+2024-07-12 23:49:22,163 - Game state saved to game_state.json
+2024-07-12 23:49:22,164 - Game map saved to game_map.txt
+2024-07-12 23:49:22,654 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:23,932 - Command accepted!
+2024-07-12 23:49:25,035 - Game state saved to game_state.json
+2024-07-12 23:49:25,036 - Game map saved to game_map.txt
+2024-07-12 23:49:25,604 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:26,582 - Command accepted!
+2024-07-12 23:49:27,676 - Game state saved to game_state.json
+2024-07-12 23:49:27,677 - Game map saved to game_map.txt
+2024-07-12 23:49:28,242 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:29,074 - Command accepted!
+2024-07-12 23:49:31,120 - Game state saved to game_state.json
+2024-07-12 23:49:31,121 - Game map saved to game_map.txt
+2024-07-12 23:49:31,551 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:32,327 - Command accepted!
+2024-07-12 23:49:34,016 - Game state saved to game_state.json
+2024-07-12 23:49:34,017 - Game map saved to game_map.txt
+2024-07-12 23:49:34,434 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:35,489 - Command accepted!
+2024-07-12 23:49:37,818 - Game state saved to game_state.json
+2024-07-12 23:49:37,819 - Game map saved to game_map.txt
+2024-07-12 23:49:38,236 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:39,084 - Command accepted!
+2024-07-12 23:49:40,242 - Game state saved to game_state.json
+2024-07-12 23:49:40,243 - Game map saved to game_map.txt
+2024-07-12 23:49:40,687 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:41,812 - Command accepted!
+2024-07-12 23:49:42,959 - Game state saved to game_state.json
+2024-07-12 23:49:42,959 - Game map saved to game_map.txt
+2024-07-12 23:49:43,359 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:44,148 - Command accepted!
+2024-07-12 23:49:45,378 - Game state saved to game_state.json
+2024-07-12 23:49:45,379 - Game map saved to game_map.txt
+2024-07-12 23:49:45,755 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:48,194 - Command accepted!
+2024-07-12 23:49:49,390 - Game state saved to game_state.json
+2024-07-12 23:49:49,391 - Game map saved to game_map.txt
+2024-07-12 23:49:49,768 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:50,602 - Command accepted!
+2024-07-12 23:49:52,145 - Game state saved to game_state.json
+2024-07-12 23:49:52,146 - Game map saved to game_map.txt
+2024-07-12 23:49:52,534 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:53,789 - Command accepted!
+2024-07-12 23:49:56,240 - Game state saved to game_state.json
+2024-07-12 23:49:56,241 - Game map saved to game_map.txt
+2024-07-12 23:49:56,784 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:49:57,748 - Command accepted!
+2024-07-12 23:49:58,900 - Game state saved to game_state.json
+2024-07-12 23:49:58,901 - Game map saved to game_map.txt
+2024-07-12 23:49:59,261 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:00,489 - Command accepted!
+2024-07-12 23:50:01,590 - Game state saved to game_state.json
+2024-07-12 23:50:01,591 - Game map saved to game_map.txt
+2024-07-12 23:50:01,958 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:02,744 - Command accepted!
+2024-07-12 23:50:04,171 - Game state saved to game_state.json
+2024-07-12 23:50:04,172 - Game map saved to game_map.txt
+2024-07-12 23:50:04,608 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:05,361 - Command accepted!
+2024-07-12 23:50:06,454 - Game state saved to game_state.json
+2024-07-12 23:50:06,455 - Game map saved to game_map.txt
+2024-07-12 23:50:06,808 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:07,768 - Command accepted!
+2024-07-12 23:50:08,863 - Game state saved to game_state.json
+2024-07-12 23:50:08,864 - Game map saved to game_map.txt
+2024-07-12 23:50:09,242 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:09,975 - Command accepted!
+2024-07-12 23:50:11,100 - Game state saved to game_state.json
+2024-07-12 23:50:11,101 - Game map saved to game_map.txt
+2024-07-12 23:50:12,807 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:13,567 - Command accepted!
+2024-07-12 23:50:14,665 - Game state saved to game_state.json
+2024-07-12 23:50:14,665 - Game map saved to game_map.txt
+2024-07-12 23:50:15,030 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:15,772 - Command accepted!
+2024-07-12 23:50:17,228 - Game state saved to game_state.json
+2024-07-12 23:50:17,228 - Game map saved to game_map.txt
+2024-07-12 23:50:17,563 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:18,302 - Command accepted!
+2024-07-12 23:50:19,542 - Game state saved to game_state.json
+2024-07-12 23:50:19,543 - Game map saved to game_map.txt
+2024-07-12 23:50:19,883 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:20,609 - Command accepted!
+2024-07-12 23:50:22,019 - Game state saved to game_state.json
+2024-07-12 23:50:22,020 - Game map saved to game_map.txt
+2024-07-12 23:50:22,371 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:23,117 - Command accepted!
+2024-07-12 23:50:24,220 - Game state saved to game_state.json
+2024-07-12 23:50:24,220 - Game map saved to game_map.txt
+2024-07-12 23:50:24,555 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:25,598 - Command accepted!
+2024-07-12 23:50:26,713 - Game state saved to game_state.json
+2024-07-12 23:50:26,713 - Game map saved to game_map.txt
+2024-07-12 23:50:27,049 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:27,814 - Command accepted!
+2024-07-12 23:50:29,404 - Game state saved to game_state.json
+2024-07-12 23:50:29,406 - Game map saved to game_map.txt
+2024-07-12 23:50:30,078 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:30,839 - Command accepted!
+2024-07-12 23:50:31,942 - Game state saved to game_state.json
+2024-07-12 23:50:31,943 - Game map saved to game_map.txt
+2024-07-12 23:50:32,368 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:33,232 - Command accepted!
+2024-07-12 23:50:34,928 - Game state saved to game_state.json
+2024-07-12 23:50:34,928 - Game map saved to game_map.txt
+2024-07-12 23:50:35,339 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:36,482 - Command accepted!
+2024-07-12 23:50:37,667 - Game state saved to game_state.json
+2024-07-12 23:50:37,668 - Game map saved to game_map.txt
+2024-07-12 23:50:38,029 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:38,768 - Command accepted!
+2024-07-12 23:50:39,864 - Game state saved to game_state.json
+2024-07-12 23:50:39,865 - Game map saved to game_map.txt
+2024-07-12 23:50:40,211 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:41,072 - Command accepted!
+2024-07-12 23:50:42,184 - Game state saved to game_state.json
+2024-07-12 23:50:42,185 - Game map saved to game_map.txt
+2024-07-12 23:50:42,552 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:43,390 - Command accepted!
+2024-07-12 23:50:44,715 - Game state saved to game_state.json
+2024-07-12 23:50:44,716 - Game map saved to game_map.txt
+2024-07-12 23:50:45,030 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:45,798 - Command accepted!
+2024-07-12 23:50:46,892 - Game state saved to game_state.json
+2024-07-12 23:50:46,893 - Game map saved to game_map.txt
+2024-07-12 23:50:47,249 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:48,070 - Command accepted!
+2024-07-12 23:50:49,291 - Game state saved to game_state.json
+2024-07-12 23:50:49,292 - Game map saved to game_map.txt
+2024-07-12 23:50:49,583 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:50,748 - Command accepted!
+2024-07-12 23:50:51,868 - Game state saved to game_state.json
+2024-07-12 23:50:51,868 - Game map saved to game_map.txt
+2024-07-12 23:50:52,244 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:53,050 - Command accepted!
+2024-07-12 23:50:54,161 - Game state saved to game_state.json
+2024-07-12 23:50:54,163 - Game map saved to game_map.txt
+2024-07-12 23:50:54,571 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:55,522 - Command accepted!
+2024-07-12 23:50:57,044 - Game state saved to game_state.json
+2024-07-12 23:50:57,045 - Game map saved to game_map.txt
+2024-07-12 23:50:57,362 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:50:58,106 - Command accepted!
+2024-07-12 23:50:59,305 - Game state saved to game_state.json
+2024-07-12 23:50:59,306 - Game map saved to game_map.txt
+2024-07-12 23:51:01,258 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:01,983 - Command accepted!
+2024-07-12 23:51:03,088 - Game state saved to game_state.json
+2024-07-12 23:51:03,089 - Game map saved to game_map.txt
+2024-07-12 23:51:03,483 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:04,412 - Command accepted!
+2024-07-12 23:51:05,822 - Game state saved to game_state.json
+2024-07-12 23:51:05,823 - Game map saved to game_map.txt
+2024-07-12 23:51:06,182 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:06,817 - Command accepted!
+2024-07-12 23:51:07,915 - Game state saved to game_state.json
+2024-07-12 23:51:07,916 - Game map saved to game_map.txt
+2024-07-12 23:51:08,237 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:09,353 - Command accepted!
+2024-07-12 23:51:10,626 - Game state saved to game_state.json
+2024-07-12 23:51:10,627 - Game map saved to game_map.txt
+2024-07-12 23:51:10,964 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:11,782 - Command accepted!
+2024-07-12 23:51:13,617 - Game state saved to game_state.json
+2024-07-12 23:51:13,617 - Game map saved to game_map.txt
+2024-07-12 23:51:13,932 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:14,704 - Command accepted!
+2024-07-12 23:51:16,142 - Game state saved to game_state.json
+2024-07-12 23:51:16,143 - Game map saved to game_map.txt
+2024-07-12 23:51:16,483 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:17,508 - Command accepted!
+2024-07-12 23:51:18,712 - Game state saved to game_state.json
+2024-07-12 23:51:18,713 - Game map saved to game_map.txt
+2024-07-12 23:51:19,034 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:19,643 - Command accepted!
+2024-07-12 23:51:20,755 - Game state saved to game_state.json
+2024-07-12 23:51:20,756 - Game map saved to game_map.txt
+2024-07-12 23:51:21,150 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:22,064 - Command accepted!
+2024-07-12 23:51:23,176 - Game state saved to game_state.json
+2024-07-12 23:51:23,176 - Game map saved to game_map.txt
+2024-07-12 23:51:23,581 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:24,295 - Command accepted!
+2024-07-12 23:51:25,406 - Game state saved to game_state.json
+2024-07-12 23:51:25,406 - Game map saved to game_map.txt
+2024-07-12 23:51:25,688 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:26,461 - Command accepted!
+2024-07-12 23:51:27,949 - Game state saved to game_state.json
+2024-07-12 23:51:27,950 - Game map saved to game_map.txt
+2024-07-12 23:51:28,226 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:28,961 - Command accepted!
+2024-07-12 23:51:30,528 - Game state saved to game_state.json
+2024-07-12 23:51:30,529 - Game map saved to game_map.txt
+2024-07-12 23:51:30,760 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:31,672 - Command accepted!
+2024-07-12 23:51:33,099 - Game state saved to game_state.json
+2024-07-12 23:51:33,100 - Game map saved to game_map.txt
+2024-07-12 23:51:33,358 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:34,291 - Command accepted!
+2024-07-12 23:51:35,399 - Game state saved to game_state.json
+2024-07-12 23:51:35,400 - Game map saved to game_map.txt
+2024-07-12 23:51:35,633 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:36,693 - Command accepted!
+2024-07-12 23:51:37,851 - Game state saved to game_state.json
+2024-07-12 23:51:37,852 - Game map saved to game_map.txt
+2024-07-12 23:51:38,082 - Game map visualized and saved to game_map_visualized.png
+2024-07-12 23:51:39,245 - Command accepted!
+2024-07-12 23:51:40,399 - Game state saved to game_state.json
