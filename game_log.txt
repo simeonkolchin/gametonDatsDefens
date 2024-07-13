@@ -624,3 +624,150 @@
 2024-07-12 23:51:38,082 - Game map visualized and saved to game_map_visualized.png
 2024-07-12 23:51:39,245 - Command accepted!
 2024-07-12 23:51:40,399 - Game state saved to game_state.json
+2024-07-13 11:32:26,692 - DEBUG mode: Skipping registration for round.
+2024-07-13 11:32:26,692 - DEBUG mode: Using local game state.
+2024-07-13 11:33:57,686 - DEBUG mode: Skipping registration for round.
+2024-07-13 11:33:57,686 - DEBUG mode: Using local game state.
+2024-07-13 11:33:57,687 - Game state saved to game_state.json
+2024-07-13 11:33:57,688 - Game map saved to game_map.txt
+2024-07-13 11:33:58,468 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:36:42,121 - DEBUG mode: Skipping registration for round.
+2024-07-13 11:36:42,121 - DEBUG mode: Using local game state.
+2024-07-13 11:36:42,121 - Game state saved to game_state.json
+2024-07-13 11:36:42,122 - Game map saved to game_map.txt
+2024-07-13 11:36:42,225 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:08,995 - DEBUG mode: Skipping registration for round.
+2024-07-13 11:38:08,996 - DEBUG mode: Using local game state.
+2024-07-13 11:38:08,996 - Game state saved to game_state.json
+2024-07-13 11:38:08,996 - Game map saved to game_map.txt
+2024-07-13 11:38:09,108 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:09,108 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:09,610 - DEBUG mode: Using local game state.
+2024-07-13 11:38:09,612 - Game state saved to game_state.json
+2024-07-13 11:38:09,613 - Game map saved to game_map.txt
+2024-07-13 11:38:09,680 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:09,680 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:10,181 - DEBUG mode: Using local game state.
+2024-07-13 11:38:10,182 - Game state saved to game_state.json
+2024-07-13 11:38:10,182 - Game map saved to game_map.txt
+2024-07-13 11:38:10,231 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:10,231 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:10,732 - DEBUG mode: Using local game state.
+2024-07-13 11:38:10,737 - Game state saved to game_state.json
+2024-07-13 11:38:10,738 - Game map saved to game_map.txt
+2024-07-13 11:38:10,797 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:10,797 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:11,298 - DEBUG mode: Using local game state.
+2024-07-13 11:38:11,299 - Game state saved to game_state.json
+2024-07-13 11:38:11,299 - Game map saved to game_map.txt
+2024-07-13 11:38:11,346 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:11,346 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:11,847 - DEBUG mode: Using local game state.
+2024-07-13 11:38:11,849 - Game state saved to game_state.json
+2024-07-13 11:38:11,850 - Game map saved to game_map.txt
+2024-07-13 11:38:11,917 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:11,917 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:12,418 - DEBUG mode: Using local game state.
+2024-07-13 11:38:12,419 - Game state saved to game_state.json
+2024-07-13 11:38:12,419 - Game map saved to game_map.txt
+2024-07-13 11:38:12,467 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:12,467 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:12,969 - DEBUG mode: Using local game state.
+2024-07-13 11:38:12,970 - Game state saved to game_state.json
+2024-07-13 11:38:12,971 - Game map saved to game_map.txt
+2024-07-13 11:38:13,037 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:13,037 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:13,538 - DEBUG mode: Using local game state.
+2024-07-13 11:38:13,541 - Game state saved to game_state.json
+2024-07-13 11:38:13,541 - Game map saved to game_map.txt
+2024-07-13 11:38:13,608 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:13,608 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:14,109 - DEBUG mode: Using local game state.
+2024-07-13 11:38:14,111 - Game state saved to game_state.json
+2024-07-13 11:38:14,111 - Game map saved to game_map.txt
+2024-07-13 11:38:14,185 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:14,185 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:14,687 - DEBUG mode: Using local game state.
+2024-07-13 11:38:14,691 - Game state saved to game_state.json
+2024-07-13 11:38:14,692 - Game map saved to game_map.txt
+2024-07-13 11:38:14,778 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:14,778 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:15,279 - DEBUG mode: Using local game state.
+2024-07-13 11:38:15,281 - Game state saved to game_state.json
+2024-07-13 11:38:15,281 - Game map saved to game_map.txt
+2024-07-13 11:38:15,337 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:15,337 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:15,838 - DEBUG mode: Using local game state.
+2024-07-13 11:38:15,841 - Game state saved to game_state.json
+2024-07-13 11:38:15,841 - Game map saved to game_map.txt
+2024-07-13 11:38:15,933 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:15,933 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:16,434 - DEBUG mode: Using local game state.
+2024-07-13 11:38:16,437 - Game state saved to game_state.json
+2024-07-13 11:38:16,437 - Game map saved to game_map.txt
+2024-07-13 11:38:16,501 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:16,501 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:17,002 - DEBUG mode: Using local game state.
+2024-07-13 11:38:17,004 - Game state saved to game_state.json
+2024-07-13 11:38:17,004 - Game map saved to game_map.txt
+2024-07-13 11:38:17,069 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:17,069 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:17,571 - DEBUG mode: Using local game state.
+2024-07-13 11:38:17,573 - Game state saved to game_state.json
+2024-07-13 11:38:17,574 - Game map saved to game_map.txt
+2024-07-13 11:38:46,649 - DEBUG mode: Skipping registration for round.
+2024-07-13 11:38:46,649 - DEBUG mode: Using local game state.
+2024-07-13 11:38:46,650 - Game state saved to game_state.json
+2024-07-13 11:38:46,650 - Game map saved to game_map.txt
+2024-07-13 11:38:46,749 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:46,749 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:47,250 - DEBUG mode: Using local game state.
+2024-07-13 11:38:47,253 - Game state saved to game_state.json
+2024-07-13 11:38:47,254 - Game map saved to game_map.txt
+2024-07-13 11:38:47,320 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:47,320 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:47,821 - DEBUG mode: Using local game state.
+2024-07-13 11:38:47,824 - Game state saved to game_state.json
+2024-07-13 11:38:47,825 - Game map saved to game_map.txt
+2024-07-13 11:38:47,889 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:47,889 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:48,390 - DEBUG mode: Using local game state.
+2024-07-13 11:38:48,393 - Game state saved to game_state.json
+2024-07-13 11:38:48,394 - Game map saved to game_map.txt
+2024-07-13 11:38:48,459 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:48,459 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:48,960 - DEBUG mode: Using local game state.
+2024-07-13 11:38:48,963 - Game state saved to game_state.json
+2024-07-13 11:38:48,963 - Game map saved to game_map.txt
+2024-07-13 11:38:49,025 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:49,025 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:49,526 - DEBUG mode: Using local game state.
+2024-07-13 11:38:49,528 - Game state saved to game_state.json
+2024-07-13 11:38:49,529 - Game map saved to game_map.txt
+2024-07-13 11:38:49,594 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:49,594 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:50,095 - DEBUG mode: Using local game state.
+2024-07-13 11:38:50,097 - Game state saved to game_state.json
+2024-07-13 11:38:50,097 - Game map saved to game_map.txt
+2024-07-13 11:38:50,164 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:50,164 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:50,665 - DEBUG mode: Using local game state.
+2024-07-13 11:38:50,668 - Game state saved to game_state.json
+2024-07-13 11:38:50,669 - Game map saved to game_map.txt
+2024-07-13 11:38:50,730 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:50,730 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:51,231 - DEBUG mode: Using local game state.
+2024-07-13 11:38:51,234 - Game state saved to game_state.json
+2024-07-13 11:38:51,234 - Game map saved to game_map.txt
+2024-07-13 11:38:51,299 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:51,299 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:51,800 - DEBUG mode: Using local game state.
+2024-07-13 11:38:51,803 - Game state saved to game_state.json
+2024-07-13 11:38:51,804 - Game map saved to game_map.txt
+2024-07-13 11:38:51,869 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:51,869 - DEBUG mode: Skipping sending commands.
+2024-07-13 11:38:52,371 - DEBUG mode: Using local game state.
+2024-07-13 11:38:52,374 - Game state saved to game_state.json
+2024-07-13 11:38:52,374 - Game map saved to game_map.txt
+2024-07-13 11:38:52,436 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 11:38:52,436 - DEBUG mode: Skipping sending commands.
