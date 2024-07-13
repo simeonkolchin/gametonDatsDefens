@@ -2,6 +2,7 @@ import logging
 import requests
 import json
 from debug_gamestate import LOCAL_GAME_STATE
+import time
 
 class GameAPI:
     def __init__(self, url, token, debug=False):
@@ -12,22 +13,32 @@ class GameAPI:
             "X-Auth-Token": self.token,
             "Content-Type": "application/json"
         }
+        self.hod_num = 1
 
     def register_for_round(self):
         if self.debug:
             logging.info("DEBUG mode: Skipping registration for round.")
         else:
-            url = f"{self.base_url}/participate"
-            response = requests.put(url, headers=self.headers)
-            if response.status_code == 200:
-                logging.info("Registered for round successfully!")
-            else:
-                logging.error(f"Failed to register for round: {response.status_code}, {response.text}")
+
+            while True:
+                url = f"{self.base_url}/participate"
+                response = requests.put(url, headers=self.headers)
+                print(response.status_code, response.text)
+                if response.status_code == 200:
+                    logging.info("Registered for round successfully!")
+                    return
+                else:
+                    logging.error(f"Failed to register for round: {response.status_code}, {response.text}")
+                    time.sleep(0.5)
 
     def get_game_state(self):
         if self.debug:
             logging.info("DEBUG mode: Using local game state.")
-            return LOCAL_GAME_STATE
+
+            with open(f'games/10_26_{min(self.hod_num, 30)}.json', 'r') as f:
+                self.hod_num += 1
+                game_state = json.load(f)
+                return game_state
         else:
             url = f"{self.base_url}/units"
             response = requests.get(url, headers=self.headers)
