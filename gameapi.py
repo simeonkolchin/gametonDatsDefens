@@ -20,22 +20,20 @@ class GameAPI:
             logging.info("DEBUG mode: Skipping registration for round.")
         else:
 
-            while True:
-                url = f"{self.base_url}/participate"
-                response = requests.put(url, headers=self.headers)
-                print(response.status_code, response.text)
-                if response.status_code == 200:
-                    logging.info("Registered for round successfully!")
-                    return
-                else:
-                    logging.error(f"Failed to register for round: {response.status_code}, {response.text}")
-                    time.sleep(0.5)
+            url = f"{self.base_url}/participate"
+            response = requests.put(url, headers=self.headers)
+            
+            print(response.status_code, response.text)
+            if response.status_code == 200:
+                logging.info("Registered for round successfully!")
+            else:
+                logging.error(f"Failed to register for round: {response.status_code}, {response.text}")
 
     def get_game_state(self):
         if self.debug:
             logging.info("DEBUG mode: Using local game state.")
 
-            with open(f'games/10_26_{min(self.hod_num, 30)}.json', 'r') as f:
+            with open(f'games/15_25_{min(self.hod_num, 112)}.json', 'r') as f:
                 self.hod_num += 1
                 game_state = json.load(f)
                 return game_state
@@ -45,7 +43,22 @@ class GameAPI:
             if response.status_code == 200:
                 return response.json()
             else:
+                print(response.text)
                 logging.error(f"Failed to get game state: {response.status_code}, {response.text}")
+                return None
+            
+    def get_world_info(self):
+        if self.debug:
+            return {
+                "zpots": []
+            }
+        else:
+            url = f"{self.base_url}/world"
+            response = requests.get(url, headers=self.headers)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                logging.error(f"Failed to get world info: {response.status_code}, {response.text}")
                 return None
 
     def send_commands(self, command):
