@@ -123,7 +123,6 @@ def filter_zombies_by_direction(zombies, base_blocks, turns=10):
         path = [(zx, zy)]
         current_x, current_y = zx, zy
 
-
         for _ in range(20):
             if direction == "up":
                 current_y -= 1
@@ -133,7 +132,6 @@ def filter_zombies_by_direction(zombies, base_blocks, turns=10):
                 current_x -= 1
             elif direction == "right":
                 current_x += 1
-
             path.append((current_x, current_y))
 
         # Проверить, попадает ли зомби на блок базы
@@ -178,15 +176,12 @@ def attack_zombies(game_state, command):
                     nearest_distance = norm_distance
 
             if nearest_zombie_idx:
-                # TODO: Если это основная база - надо находить сильнейшего зомби, которого необходимо устранить
                 command.add_attack(block_id, zombie_list[nearest_zombie_idx]["x"], zombie_list[nearest_zombie_idx]["y"])
                 zombie_list[nearest_zombie_idx]["hp"] -= attack_power
 
 def handle_zombie_attack(zombie, base_blocks, map_data):
     zombie_type = zombie["type"]
     zx, zy = zombie["x"], zombie["y"]
-
-    #TODO: кажется есть ошибка, координаты не у всех правильный
 
     if zombie_type == "normal":
         attack_coords = [(zx, zy)]
@@ -210,6 +205,23 @@ def handle_zombie_attack(zombie, base_blocks, map_data):
     
     return updated_base_blocks
 
+
+def get_connected_blocks(base_blocks):
+    connected_blocks = set()
+    to_visit = [block for block in base_blocks if block.get("isHead")]
+    while to_visit:
+        block = to_visit.pop()
+        connected_blocks.add((block["x"], block["y"]))
+        neighbors = [(block["x"] + dx, block["y"] + dy) for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]]
+        for nx, ny in neighbors:
+            if (nx, ny) not in connected_blocks:
+                for b in base_blocks:
+                    if b["x"] == nx and b["y"] == ny:
+                        to_visit.append(b)
+                        break
+    return connected_blocks
+
+
 def strategy(game_state):
     command = Command()
 
@@ -220,18 +232,6 @@ def strategy(game_state):
             for zombie in game_state["zombies"]:
                 map_data[(zombie["x"], zombie["y"])] = 'Z'
 
-        if base_blocks:
-            for block in base_blocks:
-                block_id = block["id"]
-                x, y = block["x"], block["y"]
-                attack_radius = block["range"]
-                
-                for zombie in game_state["zombies"]:
-                    zx, zy = zombie["x"], zombie["y"]
-                    distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
-                    if distance <= attack_radius:
-                        command.add_attack(block_id, zx, zy)
-
         attack_zombies(game_state, command)
         attack_enemy_bases(game_state, command)
 
@@ -239,17 +239,34 @@ def strategy(game_state):
             for zombie in game_state["zombies"]:
                 base_blocks = handle_zombie_attack(zombie, base_blocks, map_data)
 
+
+
+        # TODO: вот это прочекать, норм / не норм
         if game_state["player"]["gold"] > 0:
             build_coords = find_build_coords(base_blocks, map_data)
+            connected_blocks = get_connected_blocks(base_blocks)
             for coord in build_coords[:game_state["player"]["gold"]]:  # Ограничиваем количество новых блоков количеством золота
-                command.add_build(coord[0], coord[1])
-                # TODO:
-                # Нужно обязательно взять блоки, которые соединяют базу с отсоединенными блоками
-                # (которые не могут стрелять, потому что не соединены с основной базой)
-                # Стены еще надо парсить и смотреть чтоб на них не заходить
+                if coord in connected_blocks:
+                    command.add_build(coord[0], coord[1])
+
+            # Парсим стены и проверяем, чтобы новые блоки не строились на стенах
+            for wall in game_state["walls"] if game_state["walls"] is not None else []:
+                wall_coords = (wall["x"], wall["y"])
+                if wall_coords in build_coords:
+                    build_coords.remove(wall_coords)
 
         if base_blocks:
-            # TODO: нужно находить блоки, где близко находится джегернаут или другой сильный зомби, которого нужно убить
+            # TODO: нужно находить блоки, где близко находится джегернаут или другой сильный зомби, которого нужно убить и туда поставить базу
+
+            # Здесь нужно как то выбирать безопасные клетки, куда стоит установит базу
+            # for block in base_blocks:
+            #     for zombie in game_state["zombies"] if game_state["zombies"] is not None else []:
+            #         if zombie["type"] in ["juggernaut", "chaos_knight"]:
+            #             zx, zy = zombie["x"], zombie["y"]
+            #             distance = ((block["x"] - zx) ** 2 + (block["y"] - zy) ** 2) ** 0.5
+            #             if distance <= block["range"]:
+            #                 command.add_attack(block["id"], zx, zy)
+
             command.set_move_base(base_blocks[0]["x"], base_blocks[0]["y"])
 
     return command
