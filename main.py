@@ -116,6 +116,7 @@ def attack_enemy_bases(game_state, command):
 
 def filter_zombies_by_direction(zombies, base_blocks, turns=10):
     potential_zombies = []
+    other_zombies = []
 
     for zombie in zombies:
         zx, zy = zombie["x"], zombie["y"]
@@ -125,7 +126,6 @@ def filter_zombies_by_direction(zombies, base_blocks, turns=10):
             potential_zombies.append(zombie)
             continue
 
-        # Рассчитать все клетки, куда зомби может попасть за несколько ходов
         path = [(zx, zy)]
         current_x, current_y = zx, zy
 
@@ -144,9 +144,11 @@ def filter_zombies_by_direction(zombies, base_blocks, turns=10):
         for bx, by in [(block["x"], block["y"]) for block in base_blocks]:
             if (bx, by) in path:
                 potential_zombies.append(zombie)
-                break
+                continue
+        other_zombies.append(zombie)
+        
 
-    return potential_zombies
+    return potential_zombies, other_zombies
 
 
 def attack_zombies(game_state, command):
@@ -155,8 +157,9 @@ def attack_zombies(game_state, command):
         base_blocks = game_state["base"]
         zombies = game_state["zombies"]
 
-        # filtered_zombies = filter_zombies_by_direction(zombies, base_blocks)
-        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in zombies]
+        filtered_zombies, other_zombies = filter_zombies_by_direction(zombies, base_blocks)
+        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in filtered_zombies]
+        other_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in other_zombies]
 
         for block in base_blocks:
             block_id = block["id"]
@@ -185,6 +188,25 @@ def attack_zombies(game_state, command):
                 command.add_attack(block_id, zombie_list[nearest_zombie_idx]["x"], zombie_list[nearest_zombie_idx]["y"])
                 print(f'ATTACK: {zombie_list[nearest_zombie_idx]["x"]} - {zombie_list[nearest_zombie_idx]["y"]}')
                 zombie_list[nearest_zombie_idx]["hp"] -= attack_power
+            else:
+                for idx, zombie in enumerate(other_list):
+                    zx, zy = zombie["x"], zombie["y"]
+                    distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
+                    norm_distance = distance
+
+                    if zombie['type'] in ['liner']:
+                        norm_distance -= 1
+                    elif zombie['type'] in ['bomber', 'juggernaut', 'chaos_knight']:
+                        norm_distance -= 2
+
+                    if distance <= attack_radius and norm_distance < nearest_distance and zombie['hp'] > 0:
+                        nearest_zombie_idx = idx
+                        nearest_distance = norm_distance
+
+                if nearest_zombie_idx:
+                    command.add_attack(block_id, other_list[nearest_zombie_idx]["x"], other_list[nearest_zombie_idx]["y"])
+                    print(f'ATTACK: {other_list[nearest_zombie_idx]["x"]} - {other_list[nearest_zombie_idx]["y"]}')
+                    other_list[nearest_zombie_idx]["hp"] -= attack_power
 
 def handle_zombie_attack(zombie, base_blocks, map_data):
     zombie_type = zombie["type"]
