@@ -20,7 +20,7 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-DEBUG = True
+DEBUG = False
 
 def log_and_save_game_state(game_state, filename="game_state.json"):
     with open(filename, 'w') as f:
@@ -29,10 +29,10 @@ def log_and_save_game_state(game_state, filename="game_state.json"):
 
 def build_map(game_state, map_filename="game_map.txt"):
     map_data = {}
-    if "base" in game_state:
+    if "base" in game_state and game_state['base'] is not None:
         for block in game_state["base"]:
             map_data[(block["x"], block["y"])] = 'B'  # B - Base block
-    if "zombies" in game_state:
+    if "zombies" in game_state and game_state['zombies'] is not None:
         for zombie in game_state["zombies"]:
             # map_data[(zombie["x"], zombie["y"])] = 'Z'  # Z - Zombie
             map_data[(zombie["x"], zombie["y"])] = f'Z{zombie["health"]}'  # Z{health} - Zombie with health
@@ -97,7 +97,7 @@ def find_build_coords(base_blocks, map_data):
 
 def attack_enemy_bases(game_state, command):
     # Атакуем чужие базы
-    if "base" in game_state and "enemyBlocks" in game_state:
+    if "base" in game_state and game_state['base'] is not None and "enemyBlocks" in game_state and game_state['enemyBlocks'] is not None:
         base_blocks = game_state["base"]
         enemy_blocks = game_state["enemyBlocks"]
 
@@ -110,6 +110,7 @@ def attack_enemy_bases(game_state, command):
                 ex, ey = enemy_block["x"], enemy_block["y"]
                 distance = ((x - ex) ** 2 + (y - ey) ** 2) ** 0.5
                 if distance <= attack_radius:
+                    print(f'ATTACK BASE: {block_id} - {ex} - {ey}')
                     command.add_attack(block_id, ex, ey)
 
 
@@ -150,12 +151,12 @@ def filter_zombies_by_direction(zombies, base_blocks, turns=10):
 
 def attack_zombies(game_state, command):
     # Здесь выбираем зомби, по которым будем стрелять
-    if "base" in game_state and "zombies" in game_state:
+    if "base" in game_state and game_state["base"] is not None and "zombies" in game_state and game_state['zombies'] is not None:
         base_blocks = game_state["base"]
         zombies = game_state["zombies"]
 
-        filtered_zombies = filter_zombies_by_direction(zombies, base_blocks)
-        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in filtered_zombies]
+        # filtered_zombies = filter_zombies_by_direction(zombies, base_blocks)
+        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in zombies]
 
         for block in base_blocks:
             block_id = block["id"]
@@ -182,6 +183,7 @@ def attack_zombies(game_state, command):
 
             if nearest_zombie_idx:
                 command.add_attack(block_id, zombie_list[nearest_zombie_idx]["x"], zombie_list[nearest_zombie_idx]["y"])
+                print(f'ATTACK: {zombie_list[nearest_zombie_idx]["x"]} - {zombie_list[nearest_zombie_idx]["y"]}')
                 zombie_list[nearest_zombie_idx]["hp"] -= attack_power
 
 def handle_zombie_attack(zombie, base_blocks, map_data):
@@ -211,20 +213,20 @@ def handle_zombie_attack(zombie, base_blocks, map_data):
     return updated_base_blocks
 
 
-def get_connected_blocks(base_blocks):
-    connected_blocks = set()
-    to_visit = [block for block in base_blocks if block.get("isHead")]
-    while to_visit:
-        block = to_visit.pop()
-        connected_blocks.add((block["x"], block["y"]))
-        neighbors = [(block["x"] + dx, block["y"] + dy) for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]]
-        for nx, ny in neighbors:
-            if (nx, ny) not in connected_blocks:
-                for b in base_blocks:
-                    if b["x"] == nx and b["y"] == ny:
-                        to_visit.append(b)
-                        break
-    return connected_blocks
+# def get_connected_blocks(base_blocks):
+#     connected_blocks = set()
+#     to_visit = [block for block in base_blocks if block.get("isHead")]
+#     while to_visit:
+#         block = to_visit.pop()
+#         connected_blocks.add((block["x"], block["y"]))
+#         neighbors = [(block["x"] + dx, block["y"] + dy) for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]]
+#         for nx, ny in neighbors:
+#             if (nx, ny) not in connected_blocks:
+#                 for b in base_blocks:
+#                     if b["x"] == nx and b["y"] == ny:
+#                         to_visit.append(b)
+#                         break
+#     return connected_blocks
 
 
 def strategy(game_state):
@@ -232,33 +234,27 @@ def strategy(game_state):
 
     print("START")
 
-    if "base" in game_state:
+    if "base" in game_state and game_state['base'] is not None and "zombies" in game_state and game_state['zombies'] is not None:
         base_blocks = game_state["base"]
         map_data = {(block["x"], block["y"]): 'B' for block in base_blocks}
-        if "zombies" in game_state:
-            for zombie in game_state["zombies"]:
-                map_data[(zombie["x"], zombie["y"])] = 'Z'
-
-        print('START 2')
+    
+        for zombie in game_state["zombies"]:
+            map_data[(zombie["x"], zombie["y"])] = 'Z'
 
         attack_zombies(game_state, command)
-
-        print("START 3")
         attack_enemy_bases(game_state, command)
 
-        if "zombies" in game_state:
-            for zombie in game_state["zombies"]:
-                base_blocks = handle_zombie_attack(zombie, base_blocks, map_data)
-
-
+        for zombie in game_state["zombies"]:
+            base_blocks = handle_zombie_attack(zombie, base_blocks, map_data)
 
         # TODO: вот это прочекать, норм / не норм
         if game_state["player"]["gold"] > 0:
             build_coords = find_build_coords(base_blocks, map_data)
-            connected_blocks = get_connected_blocks(base_blocks)
+            # connected_blocks = get_connected_blocks(base_blocks)
             for coord in build_coords[:game_state["player"]["gold"]]:  # Ограничиваем количество новых блоков количеством золота
-                if coord in connected_blocks:
+                # if coord in connected_blocks:
                     command.add_build(coord[0], coord[1])
+                    print(f'BUILD: {coord[0]} - {coord[1]}')
 
             # walls проверить, пока что хз
             # # Парсим стены и проверяем, чтобы новые блоки не строились на стенах
@@ -288,7 +284,7 @@ def main():
 
     while True:
 
-        game_api.register_for_round()
+        # game_api.register_for_round()
 
         cur_time = datetime.now()
         hour = cur_time.hour
