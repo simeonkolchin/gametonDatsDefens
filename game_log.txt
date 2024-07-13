@@ -4244,3 +4244,5 @@
 2024-07-13 13:49:32,015 - Command accepted!
 2024-07-13 13:49:33,107 - Game state saved to game_state.json
 2024-07-13 13:49:33,108 - Game map saved to game_map.txt
+2024-07-13 13:49:33,310 - Game map visualized and saved to game_map_visualized.png
+2024-07-13 13:49:33,962 - Command accepted!
