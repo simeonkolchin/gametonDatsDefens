@@ -20,6 +20,8 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
+DEBUG = True
+
 def log_and_save_game_state(game_state, filename="game_state.json"):
     with open(filename, 'w') as f:
         json.dump(game_state, f, indent=4)
@@ -225,6 +227,8 @@ def get_connected_blocks(base_blocks):
 def strategy(game_state):
     command = Command()
 
+    print("START")
+
     if "base" in game_state:
         base_blocks = game_state["base"]
         map_data = {(block["x"], block["y"]): 'B' for block in base_blocks}
@@ -232,7 +236,11 @@ def strategy(game_state):
             for zombie in game_state["zombies"]:
                 map_data[(zombie["x"], zombie["y"])] = 'Z'
 
+        print('START 2')
+
         attack_zombies(game_state, command)
+
+        print("START 3")
         attack_enemy_bases(game_state, command)
 
         if "zombies" in game_state:
@@ -249,11 +257,12 @@ def strategy(game_state):
                 if coord in connected_blocks:
                     command.add_build(coord[0], coord[1])
 
-            # Парсим стены и проверяем, чтобы новые блоки не строились на стенах
-            for wall in game_state["walls"] if game_state["walls"] is not None else []:
-                wall_coords = (wall["x"], wall["y"])
-                if wall_coords in build_coords:
-                    build_coords.remove(wall_coords)
+            # walls проверить, пока что хз
+            # # Парсим стены и проверяем, чтобы новые блоки не строились на стенах
+            # for wall in game_state["walls"] if game_state["walls"] is not None else []:
+            #     wall_coords = (wall["x"], wall["y"])
+            #     if wall_coords in build_coords:
+            #         build_coords.remove(wall_coords)
 
         if base_blocks:
             # TODO: нужно находить блоки, где близко находится джегернаут или другой сильный зомби, которого нужно убить и туда поставить базу
@@ -272,7 +281,7 @@ def strategy(game_state):
     return command
 
 def main():
-    game_api = GameAPI(BASE_URL, TOKEN)
+    game_api = GameAPI(BASE_URL, TOKEN, DEBUG)
 
     while True:
 
@@ -281,14 +290,17 @@ def main():
         cur_time = datetime.now()
         hour = cur_time.hour
         minute = cur_time.minute
+        tmp_num = 1
         
         while True:
             game_state = game_api.get_game_state()
             if game_state is None:
                 break
-
-            with open(f'games/{hour}_{minute}.json', 'w') as file:
-                json.dump(game_state, file, indent=4)
+            
+            if not DEBUG:
+                with open(f'games/{hour}_{minute}_{tmp_num}.json', 'w') as file:
+                    json.dump(game_state, file, indent=4)
+                tmp_num += 1
 
             log_and_save_game_state(game_state)
             build_map(game_state)
