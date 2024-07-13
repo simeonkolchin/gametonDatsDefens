@@ -34,7 +34,8 @@ def build_map(game_state, map_filename="game_map.txt"):
             map_data[(block["x"], block["y"])] = 'B'  # B - Base block
     if "zombies" in game_state:
         for zombie in game_state["zombies"]:
-            map_data[(zombie["x"], zombie["y"])] = 'Z'  # Z - Zombie
+            # map_data[(zombie["x"], zombie["y"])] = 'Z'  # Z - Zombie
+            map_data[(zombie["x"], zombie["y"])] = f'Z{zombie["health"]}'  # Z{health} - Zombie with health
 
     if not map_data:
         return
@@ -66,8 +67,10 @@ def visualize_map(map_data, min_x, max_x, min_y, max_y):
     for (x, y), value in map_data.items():
         if value == 'B':
             color = 'green'
-        elif value == 'Z':
+        elif value.startswith('Z'):
             color = 'red'
+            zombie_hp = value[1:]
+            ax.text(x + 0.5, y + 0.5, zombie_hp, color='white', ha='center', va='center')
         else:
             color = 'white'
         rect = patches.Rectangle((x, y), 1, 1, linewidth=1, edgecolor='black', facecolor=color)
