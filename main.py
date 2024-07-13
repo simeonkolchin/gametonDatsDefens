@@ -108,13 +108,51 @@ def attack_enemy_bases(game_state, command):
                     command.add_attack(block_id, ex, ey)
 
 
+def filter_zombies_by_direction(zombies, base_blocks, turns=10):
+    potential_zombies = []
+
+    for zombie in zombies:
+        zx, zy = zombie["x"], zombie["y"]
+        direction = zombie["direction"]
+        
+        if zombie['type'] == 'chaos_knight':
+            potential_zombies.append(zombie)
+            continue
+
+        # Рассчитать все клетки, куда зомби может попасть за несколько ходов
+        path = [(zx, zy)]
+        current_x, current_y = zx, zy
+
+
+        for _ in range(20):
+            if direction == "up":
+                current_y -= 1
+            elif direction == "down":
+                current_y += 1
+            elif direction == "left":
+                current_x -= 1
+            elif direction == "right":
+                current_x += 1
+
+            path.append((current_x, current_y))
+
+        # Проверить, попадает ли зомби на блок базы
+        for bx, by in [(block["x"], block["y"]) for block in base_blocks]:
+            if (bx, by) in path:
+                potential_zombies.append(zombie)
+                break
+
+    return potential_zombies
+
+
 def attack_zombies(game_state, command):
     # Здесь выбираем зомби, по которым будем стрелять
     if "base" in game_state and "zombies" in game_state:
         base_blocks = game_state["base"]
         zombies = game_state["zombies"]
 
-        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in zombies]
+        filtered_zombies = filter_zombies_by_direction(zombies, base_blocks)
+        zombie_list = [{"x": z["x"], "y": z["y"], "hp": z["health"], "id": z["id"], "type": z["type"], "speed": z["speed"]} for z in filtered_zombies]
 
         for block in base_blocks:
             block_id = block["id"]
@@ -128,16 +166,16 @@ def attack_zombies(game_state, command):
             for idx, zombie in enumerate(zombie_list):
                 zx, zy = zombie["x"], zombie["y"]
                 distance = ((x - zx) ** 2 + (y - zy) ** 2) ** 0.5
+                norm_distance = distance
 
                 if zombie['type'] in ['liner']:
-                    distance -= 1
+                    norm_distance -= 1
+                elif zombie['type'] in ['bomber', 'juggernaut', 'chaos_knight']:
+                    norm_distance -= 2
 
-                if zombie['type'] in ['bomber', 'juggernaut', 'chaos_knight']:
-                    distance -= 2.5
-
-                if distance <= attack_radius and distance < nearest_distance and zombie['hp'] > 0:
+                if distance <= attack_radius and norm_distance < nearest_distance and zombie['hp'] > 0:
                     nearest_zombie_idx = idx
-                    nearest_distance = distance
+                    nearest_distance = norm_distance
 
             if nearest_zombie_idx:
                 # TODO: Если это основная база - надо находить сильнейшего зомби, которого необходимо устранить
@@ -147,6 +185,8 @@ def attack_zombies(game_state, command):
 def handle_zombie_attack(zombie, base_blocks, map_data):
     zombie_type = zombie["type"]
     zx, zy = zombie["x"], zombie["y"]
+
+    #TODO: кажется есть ошибка, координаты не у всех правильный
 
     if zombie_type == "normal":
         attack_coords = [(zx, zy)]
