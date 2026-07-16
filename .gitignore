@@ -1,3 +1,22 @@
+# Secrets
+.env
+
+# Notebooks / scratch
 1.ipynb
-__pycache__
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Game runtime artifacts
 games/*.json
+game_state.json
+game_log.txt
+game_map.txt
+
+# Keep the sample rendered map (game_map_visualized.png) tracked for the README.

@@ -1,9 +1,10 @@
+import os
 import requests
 from datetime import datetime, timedelta
 
-# Токен авторизации, полученный при регистрации
-TOKEN = "669018dfc12ad669018dfc12af"
-BASE_URL = "https://games-test.datsteam.dev/play/zombidef"
+# Authorization token issued when registering the team (see .env.example).
+TOKEN = os.environ.get("DATS_TOKEN", "")
+BASE_URL = os.environ.get("DATS_BASE_URL", "https://games-test.datsteam.dev/play/zombidef")
 
 HEADERS = {
     "X-Auth-Token": TOKEN,

@@ -1,0 +1,6 @@
+# Minimal, lenient lint config for this hackathon-grade codebase.
+# Catches undefined names and syntax errors; tolerates the rough edges.
+line-length = 120
+
+[lint]
+select = ["E9", "F63", "F7", "F82"]

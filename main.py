@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 import time
@@ -12,9 +13,9 @@ logging.basicConfig(filename='game_log.txt', level=logging.INFO, format='%(ascti
 from gameapi import GameAPI
 from command import Command
 
-# Токен авторизации, полученный при регистрации
-TOKEN = "669018dfc12ad669018dfc12af"
-BASE_URL = "https://games-test.datsteam.dev/play/zombidef"
+# Authorization token issued when registering the team (see .env.example).
+TOKEN = os.environ.get("DATS_TOKEN", "")
+BASE_URL = os.environ.get("DATS_BASE_URL", "https://games-test.datsteam.dev/play/zombidef")
 
 HEADERS = {
     "X-Auth-Token": TOKEN,
